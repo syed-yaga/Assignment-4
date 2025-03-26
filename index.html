@@ -19,11 +19,18 @@
     }
 
     function removeTodoFromDom(todo) {
-      
+      const todoElement = document.getElementById(`todo-${todo.id}`);
+      if (todoElement) {
+        todoElement.remove();
+      }
     }
 
     function updateTodoInDom(oldTodo, newTodo) {
-        
+      const todoElement = document.getElementById(`todo-${oldTodo.id}`);
+      if (todoElement) {
+        todoElement.innerHTML = `<h3>${newTodo.title}</h3><p>${newTodo.description}</p>
+        <button onclick="removeTodo(${newTodo.id})">Delete</button>`;
+      }
     }
 
     function updateState(newTodos) {
